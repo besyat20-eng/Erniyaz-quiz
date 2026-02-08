@@ -14,7 +14,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 0.3s ease;
 }
 
 body.result {
@@ -23,7 +22,7 @@ body.result {
 
 .container {
     background: rgba(0,0,0,0.4);
-    padding: 30px;
+    padding: 25px;
     border-radius: 20px;
     width: 90%;
     max-width: 600px;
@@ -34,7 +33,7 @@ h1 {
 }
 
 .question {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 button {
@@ -42,7 +41,7 @@ button {
     padding: 15px;
     border: none;
     border-radius: 30px;
-    background: #bbb;
+    background: #ddd;
     font-size: 18px;
     cursor: pointer;
 }
@@ -54,69 +53,58 @@ button:hover {
 #result {
     display: none;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 #photo {
     width: 200px;
-    margin-top: 20px;
+    margin-top: 15px;
     border-radius: 20px;
-    display: none;
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 <h1>Как хорошо ты меня знаешь?</h1>
 
-<form id="quiz">
-
 <div class="question">
 <p>1. Любимый цвет?</p>
-<label><input type="radio" name="q1" value="1"> Фиолетовый</label><br>
-<label><input type="radio" name="q1" value="0"> Красный</label>
+<label><input type="radio" name="q1" value="1"> Фиолетовый</label>
 </div>
 
 <div class="question">
 <p>2. В каком году я родился?</p>
-<label><input type="radio" name="q2" value="1"> 2011</label><br>
-<label><input type="radio" name="q2" value="0"> 2010</label>
+<label><input type="radio" name="q2" value="1"> 2011</label>
 </div>
 
 <div class="question">
 <p>3. Любимая игра?</p>
-<label><input type="radio" name="q3" value="1"> Marvel Rivals</label><br>
-<label><input type="radio" name="q3" value="0"> GTA</label>
+<label><input type="radio" name="q3" value="1"> Marvel Rivals</label>
 </div>
 
 <div class="question">
 <p>4. Любимая еда?</p>
-<label><input type="radio" name="q4" value="1"> Пельмени</label><br>
-<label><input type="radio" name="q4" value="0"> Пицца</label>
+<label><input type="radio" name="q4" value="1"> Пельмени</label>
 </div>
 
 <div class="question">
 <p>5. Сколько раз был аппендицит?</p>
-<label><input type="radio" name="q5" value="1"> 1</label><br>
-<label><input type="radio" name="q5" value="0"> 0</label>
+<label><input type="radio" name="q5" value="1"> 1</label>
 </div>
 
 <div class="question">
 <p>6. Сколько раз лежал в больнице?</p>
-<label><input type="radio" name="q6" value="1"> 1</label><br>
-<label><input type="radio" name="q6" value="0"> 2</label>
+<label><input type="radio" name="q6" value="1"> 1</label>
 </div>
 
 <div class="question">
 <p>7. Сколько денег я последний раз просил?</p>
-<label><input type="radio" name="q7" value="0"> 10 000</label><br>
-<label><input type="radio" name="q7" value="1"> 30 000</label><br>
-<label><input type="radio" name="q7" value="0"> 50 000</label>
+<label><input type="radio" name="q7" value="1"> 30 000</label>
 </div>
 
-<button type="button" onclick="check()">Проверить результат</button>
-</form>
+<button onclick="checkResult()">Проверить результат</button>
 
 <div id="result">
 <h2 id="score"></h2>
@@ -127,19 +115,20 @@ button:hover {
 </div>
 
 <script>
-function check() {
+function checkResult() {
     let score = 0;
+
     for (let i = 1; i <= 7; i++) {
-        let q = document.querySelector(input[name="q${i}"]:checked);
-        if (q) score += Number(q.value);
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score++;
     }
 
-    document.getElementById("score").innerText = Твой результат: ${score} / 7;
+    document.getElementById("score").innerText = "Твой результат: " + score + " / 7";
     document.getElementById("result").style.display = "block";
     document.getElementById("photo").style.display = "block";
-
     document.body.classList.add("result");
 }
 </script>
+
 </body>
 </html>
